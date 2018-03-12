@@ -29,7 +29,7 @@ tensorboardX: https://github.com/lanpa/tensorboard-pytorch
 Download and unzip this project: Colorization-master.zip.
 
 Download dataset(places) into data folder and unzip it directly:
-https://drive.google.com/open?id=1PeP-UXtw85Vc75Lp8GgHly-A8hdqht1t
+<br>https://drive.google.com/open?id=1PeP-UXtw85Vc75Lp8GgHly-A8hdqht1t
 
 
 ## Todos
