@@ -14,6 +14,8 @@ In this repository, we provide the Tensorflow and DLTK implementation for our TM
 
 tensorflow-gpu       1.14.0  
 dltk                 0.2.1   
+cuda                 10.0  
+cudnn                7.5
 
 
 ## Usage
@@ -25,9 +27,7 @@ dltk                 0.2.1
    cd psi-net
    ```
    
-2. Download the IBSR dataset:
-
-   IBSR dataset: [IBSR_V2.0_nifti_stripped.tgz](https://www.nitrc.org/frs/?group_id=48)  
+2. Download the IBSR dataset: [IBSR_V2.0_nifti_stripped.tgz](https://www.nitrc.org/frs/?group_id=48)  
    
 3. Unzip them in folder `dataset/IBSR`:
 
@@ -39,7 +39,9 @@ dltk                 0.2.1
    cd script
    python preprocessing_ibsr.py
    ```  
+   
    output results:  
+   
    `dataset/IBSR_preprocessed/IBSR_nifti_stripped`   
    
    
@@ -58,14 +60,14 @@ dltk                 0.2.1
    
 
 ## Notes
-1. If you are using a virtual environment, please reload cuda and cudnn before running, so you can use gpu during training.
+1. If you are using a virtual environment, please reload cuda and cudnn before running, so you can use gpu during training. You can also add the cuda and cudnn path to your system path:
 
    ```shell
    source ~/tensorflow-env/bin/activate
    module load cuda/10.0 cudnn/7.5_cuda-10.0
    ```
    
-2. Use pip to install tensorflow and dltk directly:
+2. Use pip to install Tensorflow and DLTK directly:
 
    ```shell
    pip install tensorflow-gpu==1.14.0
@@ -73,7 +75,8 @@ dltk                 0.2.1
    ```
    
 3. In our TMI paper, we use ``Whiten`` normalization to standardize data distributions. To better standardize data distributions and facilitate training, we try another normalization approach ``Histogram Standardization``. The results are shown in the below picture:
-   <img src="https://github.com/lihaoliu-cambridge/lihaoliu-cambridge.github.io/blob/master/pic/papers/psi-net-histogram_standardization.png" width="360"/>  
+
+<img src="https://github.com/lihaoliu-cambridge/lihaoliu-cambridge.github.io/blob/master/pic/papers/psi-net-histogram_standardization.png" width="360"/>  
 
 
 ## Citation
