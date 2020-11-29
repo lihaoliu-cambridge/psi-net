@@ -7,7 +7,7 @@ by [Lihao Liu](http://lihaoliu-cambridge.github.io), [Xiaowei Hu](https://xw-hu.
 
 In this repository, we provide the Tensorflow and DLTK implementation for our TMI paper [Ψ-Net: Stacking Densely Convolutional LSTMs for Sub-Cortical Brain Structure Segmentation](https://ieeexplore.ieee.org/document/9007625). 
 
-<img src="https://github.com/lihaoliu-cambridge/lihaoliu-cambridge.github.io/blob/master/pic/papers/psi-net-results.pdf">  
+<img src="https://github.com/lihaoliu-cambridge/lihaoliu-cambridge.github.io/blob/master/pic/papers/psi-net-results.png">  
 
 
 ## Requirement
@@ -25,23 +25,21 @@ dltk                 0.2.1
    cd psi-net
    ```
    
-2. Download the IBSR dataset.
+2. Download the IBSR dataset:
 
    IBSR dataset: [IBSR_V2.0_nifti_stripped.tgz](https://www.nitrc.org/frs/?group_id=48)  
    
-3. Unzip them in folder `dataset/IBSR`.
+3. Unzip them in folder `dataset/IBSR`:
 
    `dataset/IBSR/IBSR_nifti_stripped`   
    
-4. Pre-process the LPBA40 dataset.
+4. Pre-process the LPBA40 dataset:
 
    ```shell
    cd script
    python preprocessing_ibsr.py
-   ```
-   
-   output results:
-   
+   ```  
+   output results:  
    `dataset/IBSR_preprocessed/IBSR_nifti_stripped`   
    
    
@@ -57,12 +55,27 @@ dltk                 0.2.1
    ```shell
    python test_ibsr.py 
    ```
-
-## Modification
-
-   In our TMI paper, we use ``Whiten`` normalization to standardize data distributions. To better standardize data distributions and facilitate training, we try another normalization approach ``Histogram Standardization``; as shown in below picture.  
-   <img src="https://github.com/lihaoliu-cambridge/lihaoliu-cambridge.github.io/blob/master/pic/papers/psi-net-histogram_standardization.png" width="360"/>  
    
+
+## Notes
+1. If you are using a virtual environment, please reload cuda and cudnn before running, so you can use gpu during training.
+
+   ```shell
+   source ~/tensorflow-env/bin/activate
+   module load cuda/10.0 cudnn/7.5_cuda-10.0
+   ```
+   
+2. Use pip to install tensorflow and dltk directly:
+
+   ```shell
+   pip install tensorflow-gpu==1.14.0
+   pip install dltk
+   ```
+   
+3. In our TMI paper, we use ``Whiten`` normalization to standardize data distributions. To better standardize data distributions and facilitate training, we try another normalization approach ``Histogram Standardization``. The results are shown in the below picture:
+   <img src="https://github.com/lihaoliu-cambridge/lihaoliu-cambridge.github.io/blob/master/pic/papers/psi-net-histogram_standardization.png" width="360"/>  
+
+
 ## Citation
 
 If you use our code for your research, please cite our paper:
@@ -80,4 +93,4 @@ If you use our code for your research, please cite our paper:
 
 ## Question
 
-Please open an issue or email lhliu1994@gmail.com for any question.
+Please open an issue or email lhliu1994@gmail.com for any questions.
