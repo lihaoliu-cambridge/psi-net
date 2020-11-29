@@ -1,1 +1,0 @@
-./data/testSetPlaces205_resize/testSet_resize

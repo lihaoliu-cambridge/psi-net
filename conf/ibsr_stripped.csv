@@ -1,0 +1,19 @@
+id, subj_folder
+1,./dataset/IBSR/IBSR_nifti_stripped/IBSR_10/IBSR_10_ana_strip.nii.gz
+2,./dataset/IBSR/IBSR_nifti_stripped/IBSR_14/IBSR_14_ana_strip.nii.gz
+3,./dataset/IBSR/IBSR_nifti_stripped/IBSR_12/IBSR_12_ana_strip.nii.gz
+4,./dataset/IBSR/IBSR_nifti_stripped/IBSR_04/IBSR_04_ana_strip.nii.gz
+5,./dataset/IBSR/IBSR_nifti_stripped/IBSR_02/IBSR_02_ana_strip.nii.gz
+6,./dataset/IBSR/IBSR_nifti_stripped/IBSR_16/IBSR_16_ana_strip.nii.gz
+7,./dataset/IBSR/IBSR_nifti_stripped/IBSR_05/IBSR_05_ana_strip.nii.gz
+8,./dataset/IBSR/IBSR_nifti_stripped/IBSR_17/IBSR_17_ana_strip.nii.gz
+9,./dataset/IBSR/IBSR_nifti_stripped/IBSR_07/IBSR_07_ana_strip.nii.gz
+10,./dataset/IBSR/IBSR_nifti_stripped/IBSR_03/IBSR_03_ana_strip.nii.gz
+11,./dataset/IBSR/IBSR_nifti_stripped/IBSR_01/IBSR_01_ana_strip.nii.gz
+12,./dataset/IBSR/IBSR_nifti_stripped/IBSR_15/IBSR_15_ana_strip.nii.gz
+13,./dataset/IBSR/IBSR_nifti_stripped/IBSR_06/IBSR_06_ana_strip.nii.gz
+14,./dataset/IBSR/IBSR_nifti_stripped/IBSR_18/IBSR_18_ana_strip.nii.gz
+15,./dataset/IBSR/IBSR_nifti_stripped/IBSR_08/IBSR_08_ana_strip.nii.gz
+16,./dataset/IBSR/IBSR_nifti_stripped/IBSR_09/IBSR_09_ana_strip.nii.gz
+17,./dataset/IBSR/IBSR_nifti_stripped/IBSR_13/IBSR_13_ana_strip.nii.gz
+18,./dataset/IBSR/IBSR_nifti_stripped/IBSR_11/IBSR_11_ana_strip.nii.gz

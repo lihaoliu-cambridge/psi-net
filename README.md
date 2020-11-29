@@ -1,45 +1,89 @@
-# Colorization
-Make gray scale image colorful.
+# Unsupervised Medical Image Segmentation
 
-****
-|Author|LIU Lihao|
-|---|---
-|E-mail|lhliu@cse.cuhk.edu.hk
-****
+by [Lihao Liu](http://lihaoliu-cambridge.github.io), [Angelica I Aviles-Rivero](https://angelicaiaviles.wordpress.com/), and [Carola-Bibiane Schönlieb](https://www.damtp.cam.ac.uk/user/cbs31/About_Me.html).  
 
 
 ## Introduction
 
-Trained a U-net model for colorization tasks, as shown in the following figures.
-  ![image](https://github.com/CaptainWilliam/Colorization/blob/master/data/output_data/result/unet_1/test/240/2e089029ed09604fb02d66635466cce5.jpg)
-  ![image](https://github.com/CaptainWilliam/Colorization/blob/master/data/output_data/result/unet_1/test/240/5fda23ff7eba3203f7e7887570a6e755.jpg)
-  ![image](https://github.com/CaptainWilliam/Colorization/blob/master/data/output_data/result/unet_1/test/240/73456f7cb8ddc1d32d762d895bd3174a.jpg)
-  ![image](https://github.com/CaptainWilliam/Colorization/blob/master/data/output_data/result/unet_1/test/240/e67159e9efc1962cd2e334a022fe47d7.jpg)
-  ![image](https://github.com/CaptainWilliam/Colorization/blob/master/data/output_data/result/unet_1/test/240/f1b4ec389dae180cd5a00ae5d7717d62.jpg)
-  ![image](https://github.com/CaptainWilliam/Colorization/blob/master/data/output_data/result/unet_1/test/240/f706932f62d986c1d27a3c14925e078e.jpg)
+In this repository, we provide the PyTorch implementation for [Contrastive Registration for Unsupervised Medical Image Segmentation](https://arxiv.org/abs/2011.08894). 
+
+<img src="https://github.com/lihaoliu-cambridge/unsupervised-medical-image-segmentation/blob/master/imgs/Segmentation_Results.png">  
 
 
+## Requirement
 
-## Installation
-
-pytorch: http://pytorch.org/
-
-tensorboardX: https://github.com/lanpa/tensorboard-pytorch
-
-Download and unzip this project: Colorization-master.zip.
-
-Download dataset(places) into data folder and unzip it directly:
-<br>https://drive.google.com/open?id=1PeP-UXtw85Vc75Lp8GgHly-A8hdqht1t
+torch                       1.5.0  
+torchvision                 0.4.2  
+SimpleITK                   1.2.4  
+opencv-python               4.2.0.32  
 
 
-## Todos
+## Usage
 
- - Modify the [args.yaml](https://github.com/CaptainWilliam/Colorization/blob/master/conf/args.yaml), add the parameters your deep learning model need under the "running_params" item. Details are shown in another project: https://github.com/CaptainWilliam/Deep-Learning-Model-Saving-Helper
- - Pass the running_params (a python dict which contains the running parameters) to you own model.
- - The first parameter "is_training" is True for training mode, "is_training" is False for test mode.
- - Finish you mode(training or test), and run it.
+1. Clone the repository:
+
+   ```shell
+   git clone https://github.com/lihaoliu-cambridge/unsupervised-medical-image-segmentation.git
+   cd unsupervised-medical-image-segmentation
+   ```
+   
+2. Download the images and segmentation masks for LPBA40 dataset.
+
+   LPBA40 Images: [LPBA40_rigidly_registered_pairs.tar.gz](https://www.synapse.org/#!Synapse:syn3251419)  
+   LPBA40 Labels: [LPBA40_rigidly_registered_label_pairs.tar.gz](https://www.synapse.org/#!Synapse:syn3251070)  
+   
+3. Unzip them in folder `datasets/LPBA40`.
+
+   `datasets/LPBA40/LPBA40_rigidly_registered_pairs`  
+   `datasets/LPBA40/LPBA40_rigidly_registered_label_pairs`  
+   
+4. Pre-process the LPBA40 dataset.
+
+   ```shell
+   cd scripts
+   python preprocessing_lpba40.py
+   ```
+   
+   output results:
+   
+   `datasets/LPBA40/LPBA40_rigidly_registered_pairs_histogram_standardization_small`  
+   `datasets/LPBA40/LPBA40_rigidly_registered_label_pairs_small`
+   
+   This step aims to standardize the distribute of all images in a similar range:  
+   <img src="https://github.com/lihaoliu-cambridge/unsupervised-medical-image-segmentation/blob/master/imgs/Histogram_Standardization.png" width="360"/>  
+   
+   
+5. Train the model:
  
-```sh
-$ cd Colorization-master
-$ python main.py
+   ```shell
+   cd ..
+   python train.py  --no_html  --dataroot ./datasets/LPBA40/LPBA40_rigidly_registered_pairs_histogram_standardization_small  --dataset_mode lpba40_contrastive_learning  --batchSize 8  --lr 0.003  --model registration_model_contrastive_learning  --name lpba40_contrastive_learning
+
+   ```
+
+6. Test the saved model:
+ 
+   ```shell
+   python test_dice.py  --no_html  --dataroot ./datasets/LPBA40/LPBA40_rigidly_registered_pairs_histogram_standardization_small  --dataset_mode lpba40_contrastive_learning  --batchSize 1  --model registration_model_contrastive_learning  --name lpba40_contrastive_learning
+
+
+   ```
+
+
+## Citation
+
+If you use our code for your research, please cite our paper:
+
 ```
+@article{liu2020contrastive,
+  title={Contrastive Registration for Unsupervised Medical Image Segmentation},
+  author={Liu, Lihao and Aviles-Rivero, Angelica I and Sch{\"o}nlieb, Carola-Bibiane},
+  journal={arXiv preprint arXiv:2011.08894},
+  year={2020}
+}
+```
+
+
+## Question
+
+Please open an issue or email 'lhliu1994@gmail.com' for any question.
