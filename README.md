@@ -1,21 +1,19 @@
-# Unsupervised Medical Image Segmentation
+# Ψ-Net: Stacking Densely Convolutional LSTMs for Sub-Cortical Brain Structure Segmentation
 
-by [Lihao Liu](http://lihaoliu-cambridge.github.io), [Angelica I Aviles-Rivero](https://angelicaiaviles.wordpress.com/), and [Carola-Bibiane Schönlieb](https://www.damtp.cam.ac.uk/user/cbs31/About_Me.html).  
+by [Lihao Liu](http://lihaoliu-cambridge.github.io), [Xiaowei Hu](https://xw-hu.github.io/), [Lei Zhu](https://appsrv.cse.cuhk.edu.hk/~lzhu/), and [Pheng-Ann Heng](http://www.cse.cuhk.edu.hk/~pheng/1.html).  
 
 
 ## Introduction
 
-In this repository, we provide the PyTorch implementation for [Contrastive Registration for Unsupervised Medical Image Segmentation](https://arxiv.org/abs/2011.08894). 
+In this repository, we provide the Tensorflow and DLTK implementation for our TMI paper [Ψ-Net: Stacking Densely Convolutional LSTMs for Sub-Cortical Brain Structure Segmentation](https://ieeexplore.ieee.org/document/9007625). 
 
-<img src="https://github.com/lihaoliu-cambridge/unsupervised-medical-image-segmentation/blob/master/imgs/Segmentation_Results.png">  
+<img src="https://github.com/lihaoliu-cambridge/lihaoliu-cambridge.github.io/blob/master/pic/papers/psi-net-results.pdf">  
 
 
 ## Requirement
 
-torch                       1.5.0  
-torchvision                 0.4.2  
-SimpleITK                   1.2.4  
-opencv-python               4.2.0.32  
+tensorflow-gpu       1.14.0  
+dltk                 0.2.1   
 
 
 ## Usage
@@ -23,67 +21,63 @@ opencv-python               4.2.0.32
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/lihaoliu-cambridge/unsupervised-medical-image-segmentation.git
-   cd unsupervised-medical-image-segmentation
+   git clone https://github.com/lihaoliu-cambridge/psi-net.git
+   cd psi-net
    ```
    
-2. Download the images and segmentation masks for LPBA40 dataset.
+2. Download the IBSR dataset.
 
-   LPBA40 Images: [LPBA40_rigidly_registered_pairs.tar.gz](https://www.synapse.org/#!Synapse:syn3251419)  
-   LPBA40 Labels: [LPBA40_rigidly_registered_label_pairs.tar.gz](https://www.synapse.org/#!Synapse:syn3251070)  
+   IBSR dataset: [IBSR_V2.0_nifti_stripped.tgz](https://www.nitrc.org/frs/?group_id=48)  
    
-3. Unzip them in folder `datasets/LPBA40`.
+3. Unzip them in folder `dataset/IBSR`.
 
-   `datasets/LPBA40/LPBA40_rigidly_registered_pairs`  
-   `datasets/LPBA40/LPBA40_rigidly_registered_label_pairs`  
+   `dataset/IBSR/IBSR_nifti_stripped`   
    
 4. Pre-process the LPBA40 dataset.
 
    ```shell
-   cd scripts
-   python preprocessing_lpba40.py
+   cd script
+   python preprocessing_ibsr.py
    ```
    
    output results:
    
-   `datasets/LPBA40/LPBA40_rigidly_registered_pairs_histogram_standardization_small`  
-   `datasets/LPBA40/LPBA40_rigidly_registered_label_pairs_small`
-   
-   This step aims to standardize the distribute of all images in a similar range:  
-   <img src="https://github.com/lihaoliu-cambridge/unsupervised-medical-image-segmentation/blob/master/imgs/Histogram_Standardization.png" width="360"/>  
+   `dataset/IBSR_preprocessed/IBSR_nifti_stripped`   
    
    
 5. Train the model:
  
    ```shell
    cd ..
-   python train.py  --no_html  --dataroot ./datasets/LPBA40/LPBA40_rigidly_registered_pairs_histogram_standardization_small  --dataset_mode lpba40_contrastive_learning  --batchSize 8  --lr 0.003  --model registration_model_contrastive_learning  --name lpba40_contrastive_learning
-
+   python train_ibsr.py
    ```
 
 6. Test the saved model:
  
    ```shell
-   python test_dice.py  --no_html  --dataroot ./datasets/LPBA40/LPBA40_rigidly_registered_pairs_histogram_standardization_small  --dataset_mode lpba40_contrastive_learning  --batchSize 1  --model registration_model_contrastive_learning  --name lpba40_contrastive_learning
-
-
+   python test_ibsr.py 
    ```
 
+## Modification
 
+   In our TMI paper, we use ``Whiten`` normalization to standardize data distributions. To better standardize data distributions and facilitate training, we try another normalization approach ``Histogram Standardization``; as shown in below picture.  
+   <img src="https://github.com/lihaoliu-cambridge/lihaoliu-cambridge.github.io/blob/master/pic/papers/psi-net-histogram_standardization.png" width="360"/>  
+   
 ## Citation
 
 If you use our code for your research, please cite our paper:
 
 ```
-@article{liu2020contrastive,
-  title={Contrastive Registration for Unsupervised Medical Image Segmentation},
-  author={Liu, Lihao and Aviles-Rivero, Angelica I and Sch{\"o}nlieb, Carola-Bibiane},
-  journal={arXiv preprint arXiv:2011.08894},
-  year={2020}
+@article{liu2020psi,
+  title={$\psi$-Net: Stacking Densely Convolutional LSTMs for Sub-cortical Brain Structure Segmentation},
+  author={Liu, Lihao and Hu, Xiaowei and Zhu, Lei and Fu, Chi-Wing and Qin, Jing and Heng, Pheng-Ann},
+  journal={IEEE Transactions on Medical Imaging},
+  year={2020},
+  publisher={IEEE}
 }
 ```
 
 
 ## Question
 
-Please open an issue or email 'lhliu1994@gmail.com' for any question.
+Please open an issue or email lhliu1994@gmail.com for any question.
