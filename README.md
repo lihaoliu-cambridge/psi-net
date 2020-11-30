@@ -7,7 +7,7 @@ by [Lihao Liu](http://lihaoliu-cambridge.github.io), [Xiaowei Hu](https://xw-hu.
 
 In this repository, we provide the Tensorflow and DLTK implementation for our TMI paper [Ψ-Net: Stacking Densely Convolutional LSTMs for Sub-Cortical Brain Structure Segmentation](https://ieeexplore.ieee.org/document/9007625). 
 
-<img src="https://github.com/lihaoliu-cambridge/lihaoliu-cambridge.github.io/blob/master/pic/papers/psi-net-results.png">  
+<img src="https://github.com/lihaoliu-cambridge/lihaoliu-cambridge.github.io/blob/master/pic/papers/psi-net-network.png">  
 
 
 ## Requirement
