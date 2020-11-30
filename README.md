@@ -59,7 +59,7 @@ cudnn                7.5
    ```
    
 
-## Notes
+## Note
 1. If you are using a virtual environment, please reload cuda and cudnn before running, so you can use gpu during training. You can also add the cuda and cudnn path to your system path:
 
    ```shell
