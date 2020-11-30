@@ -27,7 +27,9 @@ cudnn                7.5
    cd psi-net
    ```
    
-2. Download the IBSR dataset: [IBSR_V2.0_nifti_stripped.tgz](https://www.nitrc.org/frs/?group_id=48)  
+2. Download the IBSR dataset: 
+
+   [IBSR_V2.0_nifti_stripped.tgz](https://www.nitrc.org/frs/?group_id=48)  
    
 3. Unzip them in folder `dataset/IBSR`:
 
