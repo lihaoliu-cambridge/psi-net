@@ -1,6 +1,6 @@
 # Ψ-Net: Stacking Densely Convolutional LSTMs for Sub-Cortical Brain Structure Segmentation
 
-by [Lihao Liu](http://lihaoliu-cambridge.github.io), [Xiaowei Hu](https://xw-hu.github.io/), [Lei Zhu](https://appsrv.cse.cuhk.edu.hk/~lzhu/), and [Pheng-Ann Heng](http://www.cse.cuhk.edu.hk/~pheng/1.html).  
+by [Lihao Liu](http://lihaoliu-cambridge.github.io), [Xiaowei Hu](https://xw-hu.github.io/), [Lei Zhu](https://appsrv.cse.cuhk.edu.hk/~lzhu/), Chi-Wing Fu, Jing Qin and [Pheng-Ann Heng](http://www.cse.cuhk.edu.hk/~pheng/1.html).  
 
 
 ## Introduction
